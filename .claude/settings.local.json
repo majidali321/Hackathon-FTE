@@ -16,7 +16,11 @@
       "Bash(netstat -ano)",
       "Bash(taskkill:*)",
       "Bash(wc:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git rm:*)",
+      "Bash(git reset:*)"
     ]
   }
 }

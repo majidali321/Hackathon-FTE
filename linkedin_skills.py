@@ -193,46 +193,68 @@ Please review the post above and decide:
 
         Returns:
             True if successful, False otherwise
-
-        Note: This is a placeholder. In production, you would:
-        1. Use LinkedIn API with OAuth
-        2. Extract post content from file
-        3. Make API call to create post
-        4. Handle errors and rate limits
         """
-        # Read the post content
-        with open(post_file, 'r', encoding='utf-8') as f:
-            content = f.read()
+        try:
+            # Import the real LinkedIn integration
+            from integrations.linkedin_integration import post_to_linkedin as real_post
 
-        # Extract post content (between ``` markers)
-        start = content.find("```\n") + 4
-        end = content.find("\n```", start)
-        post_content = content[start:end] if start > 3 and end > start else ""
+            print(f"\n[INFO] Posting to LinkedIn from: {post_file.name}")
 
-        # Placeholder for actual LinkedIn API call
-        print(f"\n[DEMO] Would post to LinkedIn:")
-        print("-" * 70)
-        print(post_content)
-        print("-" * 70)
+            # Use real LinkedIn integration
+            success = real_post(post_file)
 
-        # In production:
-        # linkedin_api.create_post(post_content)
+            if success:
+                # Move to Done folder
+                done_file = self.done / post_file.name
+                post_file.rename(done_file)
 
-        # Move to Done folder
-        done_file = self.done / post_file.name
-        post_file.rename(done_file)
+                # Log the activity
+                self.ai_skills.log_activity(
+                    activity_type="linkedin_post_published",
+                    description="Published LinkedIn post",
+                    details={
+                        "file": post_file.name,
+                        "status": "success"
+                    }
+                )
 
-        # Log the activity
-        self.ai_skills.log_activity(
-            activity_type="linkedin_post_published",
-            description="Published LinkedIn post",
-            details={
-                "file": post_file.name,
-                "content_preview": post_content[:100]
-            }
-        )
+                print("[OK] Post published successfully!")
+                return True
+            else:
+                print("[ERROR] Failed to publish post")
+                return False
 
-        return True
+        except ImportError:
+            print("[WARNING] LinkedIn integration not available, using demo mode")
+            # Fallback to demo mode
+            with open(post_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            start = content.find("```\n") + 4
+            end = content.find("\n```", start)
+            post_content = content[start:end] if start > 3 and end > start else ""
+
+            print(f"\n[DEMO] Would post to LinkedIn:")
+            print("-" * 70)
+            print(post_content)
+            print("-" * 70)
+
+            done_file = self.done / post_file.name
+            post_file.rename(done_file)
+
+            self.ai_skills.log_activity(
+                activity_type="linkedin_post_published",
+                description="Published LinkedIn post (demo mode)",
+                details={
+                    "file": post_file.name,
+                    "content_preview": post_content[:100]
+                }
+            )
+
+            return True
+        except Exception as e:
+            print(f"[ERROR] Failed to post to LinkedIn: {e}")
+            return False
 
     def schedule_linkedin_post(self, topic: str, schedule_time: str,
                               tone: str = "professional") -> str:

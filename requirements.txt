@@ -1,1 +1,26 @@
 watchdog>=3.0.0
+
+# Gmail Integration
+google-auth>=2.0.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.1.0
+google-api-python-client>=2.0.0
+
+# LinkedIn Integration (Selenium)
+selenium>=4.0.0
+webdriver-manager>=3.8.0
+
+# Social Media APIs
+facebook-sdk>=3.1.0
+instagrapi>=1.16.0
+tweepy>=4.14.0
+
+# Odoo Integration
+odoorpc>=0.8.0
+
+# Analytics
+pandas>=2.0.0
+matplotlib>=3.7.0
+
+# Monitoring
+psutil>=5.9.0
