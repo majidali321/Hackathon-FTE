@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"New-Item -ItemType Directory -Name 'Inbox','Needs_Action','Done','Plans','Pending_Approval','Logs' -Force\":*)",
+      "Bash(pip install:*)",
+      "Bash(python test_vault_interaction.py:*)",
+      "Bash(python orchestrator.py once:*)",
+      "Bash(python -m py_compile:*)",
+      "Bash(python:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill:*)",
+      "Bash(wc:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+This is a sample file to test the file system watcher functionality.
+When placed in the Inbox folder, the filesystem_watcher.py should detect this file
+and create a corresponding action item in the Needs_Action folder.

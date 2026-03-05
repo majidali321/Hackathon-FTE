@@ -1,0 +1,9 @@
+{
+  "task": "Test Multi-Step Task",
+  "start_time": "2026-03-05T16:20:22.088060",
+  "end_time": "2026-03-05T16:20:22.090540",
+  "duration_seconds": 0.000535,
+  "iterations": 0,
+  "final_status": "in_progress",
+  "history": []
+}
