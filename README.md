@@ -1,4 +1,4 @@
-# Personal AI Employee - Silver Tier Implementation ✅
+# Personal AI Employee - Hackathon FTE 🤖
 
 This project implements the **Silver Tier requirements** of the Personal AI Employee Hackathon 0: Building Autonomous FTEs in 2026.
 
@@ -24,7 +24,7 @@ This project implements the **Silver Tier requirements** of the Personal AI Empl
 - Basic folder structure
 - Agent skills implementation
 
-### Silver Tier (Functional Assistant) - NEW
+### Silver Tier (Functional Assistant)
 - **Multi-channel monitoring**: Gmail, WhatsApp, File System
 - **Business automation**: LinkedIn content generation
 - **Intelligent planning**: Automatic Plan.md generation
@@ -37,7 +37,7 @@ This project implements the **Silver Tier requirements** of the Personal AI Empl
 ## 📁 Project Structure
 
 ```
-E:\AGents Pic\Hackathon FTE\
+Hackathon-FTE/
 │
 ├── 📄 Core Documents
 │   ├── Dashboard.md                 # System monitoring dashboard
@@ -51,20 +51,20 @@ E:\AGents Pic\Hackathon FTE\
 │   ├── orchestrator.py              # Main orchestrator
 │   ├── task_processor.py            # Task processing engine
 │   ├── process_inbox.py             # Inbox processor
-│   ├── linkedin_skills.py           # LinkedIn automation (NEW)
-│   ├── reasoning_engine.py          # Plan.md generation (NEW)
-│   └── scheduler_setup.py           # Scheduling setup (NEW)
+│   ├── linkedin_skills.py           # LinkedIn automation
+│   ├── reasoning_engine.py          # Plan.md generation
+│   └── scheduler_setup.py           # Scheduling setup
 │
-├── 👁️ Watchers (NEW)
+├── 👁️ Watchers
 │   ├── watchers/
 │   │   ├── base_watcher.py          # Base watcher template
 │   │   ├── filesystem_watcher.py    # File system monitor
-│   │   ├── gmail_watcher.py         # Gmail monitor (NEW)
-│   │   └── whatsapp_watcher.py      # WhatsApp monitor (NEW)
+│   │   ├── gmail_watcher.py         # Gmail monitor
+│   │   └── whatsapp_watcher.py      # WhatsApp monitor
 │
-├── 🌐 MCP Servers (NEW)
+├── 🌐 MCP Servers
 │   └── mcp_servers/
-│       └── email_server.py          # Email MCP server (NEW)
+│       └── email_server.py          # Email MCP server
 │
 ├── 🧪 Testing & Demo
 │   ├── verify_bronze_tier.py        # Bronze verification
@@ -77,52 +77,160 @@ E:\AGents Pic\Hackathon FTE\
 │   ├── Inbox/                       # Drop folder
 │   ├── Needs_Action/                # Pending tasks
 │   ├── Done/                        # Completed tasks
-│   ├── Plans/                       # Generated plans (NEW)
+│   ├── Plans/                       # Generated plans
 │   ├── Pending_Approval/            # Approval queue
-│   ├── Approved/                    # Approved items (NEW)
+│   ├── Approved/                    # Approved items
 │   └── Logs/                        # Activity logs
 │
 └── 📦 Configuration
     ├── requirements.txt             # Python dependencies
-    ├── GMAIL_SETUP.md               # Gmail setup guide (NEW)
-    ├── MCP_SETUP.md                 # MCP setup guide (NEW)
-    └── SILVER_TIER_PLAN.md          # Implementation plan (NEW)
+    ├── .gitignore                   # Git ignore file
+    ├── GMAIL_SETUP.md               # Gmail setup guide
+    ├── MCP_SETUP.md                 # MCP setup guide
+    └── SILVER_TIER_PLAN.md          # Implementation plan
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Setup Instructions
 
-### 1. Install Dependencies
+### Prerequisites
+
+- Python 3.8 or higher
+- Git
+- Gmail account (for email watcher)
+- SMTP credentials (for email sending)
+
+### 1. Clone the Repository
+
 ```bash
+git clone https://github.com/majidali321/Hackathon-FTE.git
+cd Hackathon-FTE
+```
+
+### 2. Install Python Dependencies
+
+```bash
+# Install core dependencies
 pip install -r requirements.txt
 
-# For Gmail watcher
+# Install Gmail watcher dependencies
 pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+# Install file system watcher
+pip install watchdog
 ```
 
-### 2. Run Interactive Menu
+### 3. Configure Credentials
+
+#### Gmail API Setup (Required for Email Watcher)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing one
+3. Enable Gmail API
+4. Create OAuth 2.0 credentials (Desktop app)
+5. Download credentials and save as `credentials.json` in project root
+6. Run first-time authentication:
+
 ```bash
+python test_gmail_auth.py
+```
+
+This will open a browser for authentication and create `token.pickle`.
+
+**Note**: `credentials.json` and `token.pickle` are in `.gitignore` for security. Never commit these files.
+
+#### SMTP Configuration (Required for Email Sending)
+
+Edit `mcp_servers/email_server.py` and configure your SMTP settings:
+
+```python
+SMTP_CONFIG = {
+    'host': 'smtp.gmail.com',
+    'port': 587,
+    'username': 'your-email@gmail.com',
+    'password': 'your-app-password',  # Use app-specific password
+    'use_tls': True
+}
+```
+
+For Gmail, create an [App Password](https://myaccount.google.com/apppasswords).
+
+### 4. Create Required Folders
+
+```bash
+# These folders should already exist, but verify:
+mkdir -p Inbox Needs_Action Done Pending_Approval Approved Plans Logs
+```
+
+### 5. Test the Installation
+
+```bash
+# Run the verification script
+python verify_bronze_tier.py
+
+# Run the interactive menu
 python start.py
+
+# Run a complete demo
+python run_demo.py
 ```
 
-### 3. Start All Watchers
-```bash
-# Windows
-start_watchers.bat
+### 6. Setup Automated Scheduling (Optional)
 
-# Linux/Mac
-./start_watchers.sh
-```
-
-### 4. Setup Automated Scheduling
 ```bash
 python scheduler_setup.py
 ```
 
+Follow the prompts to configure automated task scheduling for your OS.
+
 ---
 
-## 🎯 Silver Tier Features
+## 🎯 Usage
+
+### Running Watchers
+
+Start individual watchers in separate terminal windows:
+
+```bash
+# Terminal 1: File System Watcher
+python watchers/filesystem_watcher.py
+
+# Terminal 2: Gmail Watcher
+python watchers/gmail_watcher.py
+
+# Terminal 3: WhatsApp Watcher (Demo mode)
+python watchers/whatsapp_watcher.py
+```
+
+### Processing Tasks
+
+```bash
+# Process inbox manually
+python process_inbox.py
+
+# Run orchestrator
+python orchestrator.py
+```
+
+### Interactive Menu
+
+```bash
+python start.py
+```
+
+Options:
+1. Verify Bronze Tier
+2. Run Complete Demo
+3. Test Vault Interaction
+4. Start File System Watcher
+5. Process Inbox
+6. View Dashboard
+7. Exit
+
+---
+
+## 🎯 Features
 
 ### 1. Multi-Channel Monitoring
 
@@ -133,7 +241,7 @@ python watchers/gmail_watcher.py
 - Monitors Gmail inbox every 5 minutes
 - Detects urgent keywords
 - Creates tasks for new emails
-- Requires Gmail API setup (see GMAIL_SETUP.md)
+- Requires Gmail API setup (see above)
 
 #### WhatsApp Watcher
 ```bash
@@ -417,6 +525,37 @@ google-api-python-client>=2.0.0
 
 ---
 
+## 🔒 Security Notes
+
+- Never commit `credentials.json` or `token.pickle` to version control
+- Use app-specific passwords for SMTP, not your main password
+- Review all approval requests before approving
+- Keep your `.gitignore` file updated
+- Regularly rotate API credentials
+
+---
+
+## 🐛 Troubleshooting
+
+### Gmail Authentication Issues
+```bash
+# Delete existing token and re-authenticate
+rm token.pickle
+python test_gmail_auth.py
+```
+
+### File Watcher Not Detecting Files
+- Ensure Inbox folder exists
+- Check file permissions
+- Verify watchdog is installed: `pip install watchdog`
+
+### SMTP Email Sending Fails
+- Verify SMTP credentials
+- Check if 2FA is enabled (use app password)
+- Ensure firewall allows SMTP ports (587/465)
+
+---
+
 ## 🎉 Congratulations!
 
 You've successfully completed **Silver Tier**!
@@ -433,9 +572,22 @@ Your AI Employee now:
 
 ---
 
+## 📄 License
+
+This project is part of the Personal AI Employee Hackathon 0: Building Autonomous FTEs in 2026.
+
+---
+
+## 🤝 Contributing
+
+This is a hackathon project. Feel free to fork and extend for your own use cases.
+
+---
+
 **Built with**: Python 3.14, Claude Code, Obsidian-style Markdown
 **Architecture**: Local-first, Human-in-the-loop, Agent-driven
 **Status**: Silver Tier COMPLETE ✅
-**Date**: March 3, 2026
+**Repository**: https://github.com/majidali321/Hackathon-FTE
+**Date**: March 5, 2026
 
 🎊 **READY FOR GOLD TIER!** 🎊
