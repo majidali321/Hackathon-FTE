@@ -1,0 +1,1 @@
+{"code":"async (page) => { await page.getByRole('button', { name: 'Post' }).click(); await page.waitForTimeout(3000); return 'Posted!'; }"}

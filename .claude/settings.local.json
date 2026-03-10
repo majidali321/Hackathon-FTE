@@ -20,7 +20,12 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git rm:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(bash:*)",
+      "Bash(python3:*)",
+      "Bash(pgrep:*)",
+      "Bash(node:*)",
+      "Bash(npx playwright:*)"
     ]
   }
 }

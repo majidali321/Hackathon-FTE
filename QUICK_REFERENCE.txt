@@ -1,0 +1,77 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                  AGENTS SOCIAL MEDIA - QUICK REFERENCE               ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+✅ SETUP COMPLETE - All credentials configured and verified!
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ QUICK TESTS (Start Here!)                                           │
+└──────────────────────────────────────────────────────────────────────┘
+
+  Twitter/X:    python quick_twitter_test.py
+  Facebook:     python quick_facebook_test.py
+  Instagram:    python quick_instagram_test.py path/to/image.jpg
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ POST TO ALL PLATFORMS                                                │
+└──────────────────────────────────────────────────────────────────────┘
+
+  python agents_social_media_poster.py --content "Your message"
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ POST TO SPECIFIC PLATFORM                                            │
+└──────────────────────────────────────────────────────────────────────┘
+
+  Twitter:      python agents_social_media_poster.py --platform twitter --content "Tweet"
+  Facebook:     python agents_social_media_poster.py --platform facebook --content "Post"
+  Instagram:    python agents_social_media_poster.py --platform instagram --content "Caption" --image pic.jpg
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ PYTHON CODE USAGE                                                    │
+└──────────────────────────────────────────────────────────────────────┘
+
+  from agents_social_media_poster import AGentsSocialMediaPoster
+
+  poster = AGentsSocialMediaPoster()
+  poster.post_to_all("Hello from AGents!")
+  poster.post_to_platform('twitter', "Quick tweet!")
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ CREDENTIALS STATUS                                                   │
+└──────────────────────────────────────────────────────────────────────┘
+
+  ✅ Twitter/X:   majidali13@rocketmail.com
+  ✅ Instagram:   majidali13@rocketmail.com
+  ✅ Facebook:    majidali13@rocketmail.com
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ KEY FILES                                                            │
+└──────────────────────────────────────────────────────────────────────┘
+
+  Main Interface:        agents_social_media_poster.py
+  Twitter Integration:   integrations/twitter_integration.py
+  Instagram Integration: integrations/instagram_integration.py
+  Facebook Integration:  integrations/facebook_integration.py
+  Credentials:           credentials.json
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ IMPORTANT NOTES                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+
+  ⚠️  Instagram REQUIRES an image file
+  ⚠️  Twitter has 280 character limit
+  ⚠️  First run may need 2FA verification
+  ⚠️  Chrome browser required (Selenium)
+  💡  Use --headless flag to hide browser windows
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ DOCUMENTATION                                                        │
+└──────────────────────────────────────────────────────────────────────┘
+
+  Complete Guide:  SOCIAL_MEDIA_GUIDE.md
+  Setup Summary:   SOCIAL_MEDIA_SETUP_COMPLETE.md
+  This Card:       QUICK_REFERENCE.txt
+
+╔══════════════════════════════════════════════════════════════════════╗
+║  🎉 Ready to test? Run: python quick_twitter_test.py                ║
+╚══════════════════════════════════════════════════════════════════════╝

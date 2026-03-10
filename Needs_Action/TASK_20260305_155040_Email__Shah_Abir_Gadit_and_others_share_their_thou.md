@@ -26,13 +26,20 @@ Dear Recruiters, If you expect a Data Scientist to be an expert in: → Python�
 
 ## Message Body (First 500 chars)
 ```
-Shah Abir Gadit shared a post: Dear Recruiters,
-
-If you expect a Data Scientist to be an expert in:
-
-→ Python for large-scale data analysis
-→ Excel with complex financial-style…
-LIKE PRAISE EMPATHY 108, 1 Comment
+Shah Abir Gadit shared a post: Dear Recruiters,
+
+
+
+If you expect a Data Scientist to be an expert in:
+
+
+
+→ Python for large-scale data analysis
+
+→ Excel with complex financial-style…
+
+LIKE PRAISE EMPATHY 108, 1 Comment
+
 Read more: https://www.linkedin.com/comm/feed/update/urn:li:activity:7431642467965329408?origin=NETWORK_CONVERSATIONS&lipi=urn%3Ali%3Apage%3Aemail_email_network_conversations_01%3Br%2F7MIbNoTUu5tX8VL0KQXw%3D%3D&midToken=AQGYIT7FOZfe1g&midSig=1ZSVpfJZTJPs81&trk=eml-email_network_c
 ```
 
